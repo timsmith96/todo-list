@@ -1,0 +1,412 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Rock+Salt&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #ecfeff;
+  height: 100vh;
+  word-wrap: break-word;
+}
+
+/* UTILS */
+.btn {
+  border: 1px solid #0369a1;
+  background-color: #fff;
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+  color: #0369a1;
+  display: block;
+}
+
+.btn:hover {
+  border: 1px solid #06b6d4;
+  background-color: #fff;
+  color: #06b6d4;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+input[type='date']:hover {
+  cursor: pointer;
+}
+
+/* HEADING */
+.heading {
+  text-align: center;
+  padding: 30px;
+  font-size: 3rem;
+}
+
+#new-task {
+  margin-top: 30px;
+}
+
+#new-task i {
+  display: block;
+}
+
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease;
+}
+
+.modal-container.show {
+  pointer-events: auto;
+  opacity: 1;
+  z-index: 10;
+}
+
+.modal {
+  background-color: #fff;
+  width: 400px;
+  max-width: 90%;
+  padding: 30px 50px;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+}
+
+form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+label {
+  text-align: left;
+}
+
+/* MODAL FORM */
+
+#title {
+  font-size: 22px;
+}
+
+.dueDate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-heading {
+  font-size: 19px;
+  text-align: left;
+  text-decoration: underline;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.priority {
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type='radio'] {
+  accent-color: #22d3ee;
+}
+
+input[type='text'] {
+  border: none;
+  border-bottom: 1px solid #0891b2;
+}
+
+#project-select {
+  font-size: 1.25rem;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+form input {
+  font-size: 1rem;
+}
+
+input[type='text']:focus {
+  outline: none;
+}
+
+input[type='date'] {
+  border: none;
+  padding: 0px;
+  font-family: 'Roboto';
+}
+
+input[type='time'] {
+  border: none;
+}
+
+#form-new-project {
+  font-size: 16px;
+  width: 70%;
+}
+
+#form-project-label {
+  font-size: 14px;
+}
+
+#close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #fff;
+  border: none;
+  z-index: 10;
+}
+
+#close:hover {
+  cursor: pointer;
+}
+
+.submit-btn {
+  border: 1px solid #0369a1;
+  background-color: #fff;
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+  color: #0369a1;
+}
+
+.submit-btn:hover {
+  border: 1px solid #06b6d4;
+  background-color: #fff;
+  color: #06b6d4;
+  cursor: pointer;
+}
+
+/* DISPLAY TODOS */
+.display-todos {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  max-width: 1100px;
+  width: 90vw;
+  min-height: 60vh;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  border-radius: 10px;
+}
+
+.todo.complete {
+  background-color: #94a3b8;
+  opacity: 0.5;
+}
+
+/* DISPLAY TODOS MENU */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.projects-header {
+  border-bottom: 1px solid #0369a1;
+  margin-bottom: 10px;
+  width: 80%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 87%;
+  font-size: 1.35rem;
+}
+
+.upper-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.new-container {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.menu-item:hover {
+  /* padding-left: 5px; */
+}
+
+#new-project {
+  border: none;
+  font-size: 16px;
+  width: 80%;
+  font-size: 1.35rem;
+}
+
+#new-project:hover {
+  cursor: auto;
+  color: #000;
+}
+
+#new-project-label {
+  font-size: 0.6rem;
+  display: none;
+}
+
+#new-project-label.show {
+  display: block;
+}
+
+#new-project-label:hover {
+  cursor: pointer;
+}
+
+.new-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0;
+}
+
+/* TODOS */
+.todos-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.edit-container {
+  padding: 5px;
+}
+
+.todo,
+.edit-container {
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  background-color: #feff9c;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  font-family: 'Rock Salt', cursive;
+}
+
+.todo:hover {
+  cursor: pointer;
+}
+
+.edit-todo:hover {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.todo-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* 
+============
+EDIT TODO 
+=============
+*/
+
+.edit-controls-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.edit-controls-container button {
+  background: none;
+  border: none;
+}
+
+.edit-controls-container button:focus {
+  outline: none;
+}
+
+.edit-todo-header {
+  font-family: 'Rock Salt', cursive;
+  background: none;
+  border: none !important;
+  text-align: center;
+  font-size: 18px;
+}
+
+.edit-todo-date {
+  font-size: 11px;
+  background: none;
+  font-family: 'Rock Salt', cursive !important;
+  width: 70%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#edit-project {
+  width: 70%;
+  margin: 0 auto;
+  font-family: 'Rock Salt', cursive !important;
+  font-size: 10px;
+}
+
+.edit-controls-container i {
+  font-size: 18px;
+}
+
+.edit-controls-container i:hover {
+  color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+/* 
+============
+PROJECTS
+=============
+*/
+
+.remove-project-btn {
+  font-size: 1rem;
+  display: none;
+}
+
+.menu-item:hover .remove-project-btn {
+  display: block;
+  cursor: pointer;
+}

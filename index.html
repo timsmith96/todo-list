@@ -4,10 +4,88 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="./style.css" />
     <title>Todos</title>
-  <script defer src="bundle.js"></script></head>
+    <script defer src="bundle.js"></script>
+  </head>
   <body>
-    <h1 class="mytest">This should be orange</h1>
+    <h1 class="heading">Todos...</h1>
+    <button id="new-todo" class="btn">
+      <i class="fa-solid fa-plus"></i>New Todo
+    </button>
+    <div class="modal-container" id="modal-container">
+      <div class="modal">
+        <form
+          class="form"
+          action="
+        "
+        >
+          <input
+            class="input"
+            id="title"
+            type="text"
+            placeholder="Title"
+            required
+            maxlength="100"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+          />
+          <h2 class="form-heading">Due by</h2>
+          <div class="dueDate">
+            <input
+              class="input"
+              id="dueDate"
+              type="date"
+              placeholder="Due"
+              required
+            />
+          </div>
+          <label class="form-heading" for="project-select">Add to project?</label>
+          <select name="project" id="project-select">
+          </select>
+          <div class="new-container">
+            <input type="text" placeholder="create new project +" class="menu-item" maxlength="15" minlength="1" id="form-new-project"></input>
+            <label for="form-new-project" id="form-project-label">ADD</label>
+          </div>   
+          <button class="submit-btn" type="submit">Create</button>
+        </form>
+        <button id="close">
+          <i class="fa-solid fa-x"></i>
+        </button>
+      </div>
+    </div>
+    <div class="display-todos">
+      <div class="menu">
+        <div class="upper-menu">
+          <div class="menu-item"><a id="all-todos" data-list="allTodos" href="#">All todos</a></div>
+          <div class="menu-item"><a href="#" id="todays-todos" data-list="todaysTodos">Today's todos</a></div>
+          <div class="menu-item"><a href="#" id="tomorrows-todos" data-list="tomorrowsTodos">Tomorrow's todos</a></div>
+        </div>
+        <div class="lower-menu">
+          <p class="projects-header">projects</p>
+          <div class="projects-container" id="projects-container"></div>
+          <div class="new-container">
+            <input type="text" placeholder="add project +" class="menu-item" maxlength="25" minlength="1" id="new-project"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"></input>
+            <label for="new-project" id="new-project-label">ADD</label>
+          </div>   
+        </div>
+      </div>
+      <div class="todos-container">
+      </div>
+    </div>
   </body>
 </html>
+
