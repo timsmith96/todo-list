@@ -31,6 +31,7 @@ export default function createTodoElements(todos) {
       if (e.target.classList.contains('fa-trash')) {
         const index = todos.findIndex((y) => y === todo);
         todos.splice(index, 1);
+        localStorage.removeItem(todo.title);
         displayTodos(todos);
       }
       if (e.target.classList.contains('fa-check-circle')) {

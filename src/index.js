@@ -43,6 +43,10 @@ const formNewProject = document.getElementById('form-new-project');
 // FUNCTIONS
 // ==================
 
+const saveToStorage = (todo) => {
+  localStorage.setItem(todo.title, JSON.stringify(todo));
+};
+
 export default function displayTodos(arr) {
   todosContainer.innerHTML = '';
   const todosToDisplay = createTodoElements(arr);
@@ -88,6 +92,7 @@ form.addEventListener('submit', (e) => {
   const project = projectSelect.value;
   const newTodo = new Todo(title.value, date, project);
   config.TODOS.push(newTodo);
+  saveToStorage(newTodo, project);
   setTimeout(() => {
     displayTodos(config.TODOS);
   }, 50);
@@ -131,6 +136,33 @@ newProjectBtn.addEventListener('click', (e) => {
   if (newProjectInput.value.length > 0) {
     handleNewProject();
   }
+});
+
+window.addEventListener('load', (e) => {
+  const projects = [];
+  Object.keys(localStorage).forEach(function (key) {
+    const data = JSON.parse(localStorage.getItem(key));
+    data.dueDate = new Date(data.dueDate);
+    config.TODOS.push(data);
+    projects.push(data.project);
+  });
+  projects.forEach((project) => {
+    config.PROJECTS.push(project);
+    const myNewProject = createProjectOption(project);
+    myNewProject.addEventListener('click', (e) => {
+      todosContainer.innerHTML = '';
+      const arr = [];
+      config.TODOS.forEach((todo) => {
+        if (todo.project === e.target.dataset.project) {
+          arr.push(todo);
+        }
+      });
+      displayTodos(arr);
+    });
+    projectsContainer.appendChild(myNewProject);
+  });
+
+  displayTodos(config.TODOS);
 });
 
 formProjectSubmitBtn.addEventListener('click', (e) => {
